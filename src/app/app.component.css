@@ -1,0 +1,8 @@
+.btn{
+    position: relative;
+    color: aliceblue;
+    margin-left: 1%;
+    margin-top: 1%; 
+    border-radius: 2rem;
+    box-shadow: 0 2px 5px 0px rgba(238, 240, 243, 0.986);
+}

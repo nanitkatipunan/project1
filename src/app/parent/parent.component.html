@@ -1,0 +1,79 @@
+<button class="btn btn-primary " (click)="onPress()" *ngIf="!press">Go to List <i class="fa fa-chevron-right"></i>
+</button>
+<button class="btn btn-primary" (click)="onPress()" *ngIf="press"><i class="fa fa-chevron-left"></i> Go to Registration</button>
+<form (ngSubmit)="onSubmit();sampleForm.reset()" #sampleForm="ngForm" *ngIf="!press">
+    <h1>Registration</h1>
+    <div>
+        <label><b>Firstname: </b></label><br>
+        <input type="text" name="firstname" placeholder="First Name" required minlength="4" [(ngModel)]="inputFname"
+            #fname="ngModel" />
+    </div>
+    <div *ngIf="fname.invalid && (fname.dirty||fname.touched)">
+        <div *ngIf="fname.errors.required" class="alert alert-danger" role="alert">
+            <p class="text-danger font-italic small">Firstname required! </p>
+        </div>
+        <div *ngIf="fname.errors.minlength" class="alert alert-danger" role="alert">
+            <p class="text-danger font-italic small">Firstname must be have at least 4 characters</p>
+        </div>
+    </div>
+    <div>
+        <label><b>Lastname: </b> </label><br>
+        <input type="text" name="lastname" placeholder="Last Name" required minlength="4" [(ngModel)]="inputLname"
+            #lname="ngModel" />
+    </div>
+    <div *ngIf="lname.invalid && (lname.dirty||lname.touched)">
+        <div *ngIf="lname.errors.required" class="alert alert-danger" role="alert">
+            <p class="text-danger font-italic small">Lastname required!</p>
+        </div>
+        <div *ngIf="lname.errors.minlength" class="alert alert-danger" role="alert">
+            <p class="text-danger font-italic small">Lastname must be have at least 4 characters</p>
+        </div>
+    </div>
+    <div>
+        <label for="gender"><b>Gender:  </b></label><br>
+        <select name="gender" [(ngModel)]="inputGender" #gender="ngModel">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <div *ngIf="gender.invalid && (gender.dirty || gender.touched)">
+            <div *ngIf="gender.errors.required" class="alert alert-danger" role="alert">
+                <p class="text">Gender is required!</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <label><b>Email: </b></label><br>
+        <input type="email" name="email" placeholder="Email" [(ngModel)]="inputEmail" #emailadd="ngModel" email pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            required />
+    </div>
+    <div *ngIf="emailadd.invalid && (emailadd.dirty||emailadd.touched)">
+        <div *ngIf="emailadd.errors.required" class="alert alert-danger" role="alert">
+            <p class="text-danger font-italic small">Email required!</p>
+        </div>
+        <div *ngIf="emailadd.errors.pattern" class="alert alert-danger" role="alert">
+            <p class="text-danger font-italic small">Invalid Email Address!</p>
+        </div>
+    </div>
+
+    <div>
+        <label><b>Password: </b></label><br>
+        <input type="password" placeholder="Password" name="password" [(ngModel)]="inputPass" #pass="ngModel" password
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$" required />
+    </div>
+    <div *ngIf="pass.invalid && (pass.dirty||pass.touched)">
+        <div *ngIf="pass.errors.required" class="alert alert-danger" role="alert">
+            <p class="text-danger font-italic small">Password is required!</p>
+        </div>
+
+        <div *ngIf="pass.errors.pattern" class="alert alert-danger" role="alert">
+            <p class="text-danger font-italic small">Password should be at least 8 characters</p>
+        </div>
+    </div>
+    <br>
+    <button class="btn btn-primary btnSubmit" [disabled]="!sampleForm.form.valid">Submit</button>
+    <button (click)="btnCancel();sampleForm.reset()"  *ngIf="cancel" class="btn btn-danger btnSubmit">Cancel</button>
+
+</form>
+
+<br>
+<app-child *ngIf="press" (formEvent)="onClick($event)" [holder]="data"></app-child>;

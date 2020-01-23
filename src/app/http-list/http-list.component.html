@@ -1,0 +1,27 @@
+<br><table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">name</th>
+            <th scope="col">username</th>
+            <th scope="col">Email</th>
+            <th scope="col">phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let info of holder">
+            <td>{{ info.id }}</td>
+            <td>{{ info.name }}</td>
+            <td>{{ info.username }}</td>
+            <td>{{ info.email }}</td>
+            <td>{{ info.phone }}</td>
+           
+            <td><button class="btn btn-danger" (click)="onDelete(info.id)" >Delete</button>
+            <td><button class="btn btn-primary" (click)="onEdit(info)" >Edit</button>
+            <td><button class="btn btn-success"  [routerLink]="['/view', info.id]"
+                routerLinkActive="router-link-active">View</button>
+               
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,19 @@
+table{
+    background: rgba(255, 255, 255, 0.945);
+    width: 75%;
+    margin: auto;
+    box-shadow: 10px 20px 11px 0px rgba(31, 27, 27, 0.75);
+  
+   
+}
+.btn{
+    border-radius: 2rem;
+}
+
+
+td, th{
+    border-bottom: 1px solid rgba(70, 94, 175, 0.534);
+    color:black;
+ 
+    
+}

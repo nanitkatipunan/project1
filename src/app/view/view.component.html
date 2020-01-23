@@ -1,0 +1,9 @@
+<div class="form">
+    <ul *ngFor="let info of informations">
+        <li>Id: {{info.id}}</li>
+        <li>Name: {{info.name}}</li>
+        <li>Email: {{info.email}}</li>
+        <li>Phone: {{info.phone}}</li>
+    </ul>
+    <button class="btn btn-primary" routerLink="/dashboard">Go to form</button>
+</div>
